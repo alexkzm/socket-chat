@@ -1,17 +1,17 @@
-var app = require('express')();
-var http = require('http').Server(app);
-var io = require('socket.io')(http);
+import app from 'express'()
+import http from 'http'.Server(app)
+import io from 'socket.io'(http)
 
-app.get("/", function(req, res){
-  res.sendFile(__dirname + '/index.html');
-});
+app.get("/", (req, res) => {
+  res.sendFile(__dirname + '/index.html')
+})
 
-io.on('connection', function(socket){
-	socket.on("request", function(msg){
-		io.emit("request", msg);
-	});
-});
+io.on('connection', (socket) => {
+	socket.on("request", (msg) => {
+		io.emit("request", msg)
+	})
+})
 
-http.listen(3000, function(){
-  console.log('listening on *:3000');
-});
+http.listen(3000, () => {
+  console.log('listening on *:3000')
+})
